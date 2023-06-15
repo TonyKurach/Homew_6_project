@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% block main %}
+    <h4 class="card-title">Available Collects</h4>
+    {% if message %}
+        <p class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </p>
+    {% endif %}
+    {% if latest_collects %}
+        <ul>
+            {% for collect in latest_collects %}
+                <li>
+                    <a href="/collects/{{ collect.id }}/">
+                        {{ collect.collect_text }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No collects are available right now.</p>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>
